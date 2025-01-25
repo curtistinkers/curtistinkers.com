@@ -6,6 +6,7 @@
     ],
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "content-hash": "e613bf3ba61117be5e9580ffc224e83c",
 =======
     "content-hash": "722ae051ab5db55a90034cc307797a4f",
@@ -13,6 +14,9 @@
 =======
     "content-hash": "61df413cf285732b2f4f54f2f74e7e86",
 >>>>>>> db01cff (add Webform external to composer.json)
+=======
+    "content-hash": "d916f3618028e85876597a5f8ddecf6c",
+>>>>>>> a94a343 (Excluded robots.txt from scaffolding for RobotTxt module)
     "packages": [
         {
             "name": "andileco/eval-math",
@@ -9831,7 +9835,11 @@
         },
         {
             "name": "illuminate/collections",
+<<<<<<< HEAD
             "version": "v11.41.0",
+=======
+            "version": "v11.40.0",
+>>>>>>> a94a343 (Excluded robots.txt from scaffolding for RobotTxt module)
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -9887,7 +9895,11 @@
         },
         {
             "name": "illuminate/conditionable",
+<<<<<<< HEAD
             "version": "v11.41.0",
+=======
+            "version": "v11.40.0",
+>>>>>>> a94a343 (Excluded robots.txt from scaffolding for RobotTxt module)
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -9933,7 +9945,11 @@
         },
         {
             "name": "illuminate/contracts",
+<<<<<<< HEAD
             "version": "v11.41.0",
+=======
+            "version": "v11.40.0",
+>>>>>>> a94a343 (Excluded robots.txt from scaffolding for RobotTxt module)
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -9981,7 +9997,11 @@
         },
         {
             "name": "illuminate/macroable",
+<<<<<<< HEAD
             "version": "v11.41.0",
+=======
+            "version": "v11.40.0",
+>>>>>>> a94a343 (Excluded robots.txt from scaffolding for RobotTxt module)
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -10027,6 +10047,7 @@
         },
         {
             "name": "illuminate/support",
+<<<<<<< HEAD
             "version": "v11.41.0",
             "source": {
                 "type": "git",
@@ -10037,6 +10058,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/illuminate/support/zipball/d0234a6a1572112543af3e2e09dfab5190ed467f",
                 "reference": "d0234a6a1572112543af3e2e09dfab5190ed467f",
+=======
+            "version": "v11.40.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/support.git",
+                "reference": "f63af42cfacf8ac3fcf3df49b06de66ff3b22ee0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/f63af42cfacf8ac3fcf3df49b06de66ff3b22ee0",
+                "reference": "f63af42cfacf8ac3fcf3df49b06de66ff3b22ee0",
+>>>>>>> a94a343 (Excluded robots.txt from scaffolding for RobotTxt module)
                 "shasum": ""
             },
             "require": {
@@ -10100,7 +10133,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
+<<<<<<< HEAD
             "time": "2025-01-27T00:59:08+00:00"
+=======
+            "time": "2025-01-22T21:19:28+00:00"
+>>>>>>> a94a343 (Excluded robots.txt from scaffolding for RobotTxt module)
         },
         {
             "name": "itamair/geophp",
