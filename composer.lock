@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "e613bf3ba61117be5e9580ffc224e83c",
+=======
+    "content-hash": "722ae051ab5db55a90034cc307797a4f",
+>>>>>>> b33e04f (update composer and lockfile)
     "packages": [
         {
             "name": "andileco/eval-math",
@@ -6058,6 +6062,7 @@
             ]
         },
         {
+<<<<<<< HEAD
             "name": "drupal/inline_entity_form",
             "version": "3.0.0-rc20",
             "source": {
@@ -6151,6 +6156,8 @@
             }
         },
         {
+=======
+>>>>>>> b33e04f (update composer and lockfile)
             "name": "drupal/jquery_ui",
             "version": "1.7.0",
             "source": {
@@ -16487,10 +16494,14 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
+<<<<<<< HEAD
         "drupal/ai_provider_ollama": 10,
         "drupal/entity_usage": 10,
         "drupal/filefield_paths": 10,
         "drupal/inline_entity_form": 5,
+=======
+        "drupal/filefield_paths": 10,
+>>>>>>> b33e04f (update composer and lockfile)
         "drupal/project_browser": 15,
         "drupal/webform": 10,
         "szeidler/revive-xmlrpc": 20
