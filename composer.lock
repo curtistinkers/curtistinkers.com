@@ -5,10 +5,14 @@
         "This file is @generated automatically"
     ],
 <<<<<<< HEAD
+<<<<<<< HEAD
     "content-hash": "e613bf3ba61117be5e9580ffc224e83c",
 =======
     "content-hash": "722ae051ab5db55a90034cc307797a4f",
 >>>>>>> b33e04f (update composer and lockfile)
+=======
+    "content-hash": "61df413cf285732b2f4f54f2f74e7e86",
+>>>>>>> db01cff (add Webform external to composer.json)
     "packages": [
         {
             "name": "andileco/eval-math",
@@ -10205,6 +10209,7 @@
             ]
         },
         {
+<<<<<<< HEAD
             "name": "jquery/simple-color",
             "version": "1.2.3",
             "dist": {
@@ -10220,6 +10225,8 @@
             ]
         },
         {
+=======
+>>>>>>> db01cff (add Webform external to composer.json)
             "name": "jquery/textcounter",
             "version": "0.9.1",
             "dist": {
@@ -12186,6 +12193,7 @@
             "time": "2021-09-22T16:57:06+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "phpxmlrpc/phpxmlrpc",
             "version": "4.11.1",
             "source": {
@@ -12246,6 +12254,8 @@
             "time": "2025-01-17T17:04:37+00:00"
         },
         {
+=======
+>>>>>>> db01cff (add Webform external to composer.json)
             "name": "popperjs/popperjs",
             "version": "2.11.6",
             "dist": {
@@ -15935,6 +15945,21 @@
                 "xmlrpc"
             ],
             "time": "2025-01-27T01:28:00+00:00"
+        },
+        {
+            "name": "tabby/tabby",
+            "version": "12.0.3",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/cferdinandi/tabby/archive/refs/tags/v12.0.3.zip"
+            },
+            "type": "drupal-library",
+            "extra": {
+                "installer-name": "tabby"
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "tabby/tabby",
