@@ -7,6 +7,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "content-hash": "e613bf3ba61117be5e9580ffc224e83c",
 =======
     "content-hash": "722ae051ab5db55a90034cc307797a4f",
@@ -17,6 +18,9 @@
 =======
     "content-hash": "d916f3618028e85876597a5f8ddecf6c",
 >>>>>>> a94a343 (Excluded robots.txt from scaffolding for RobotTxt module)
+=======
+    "content-hash": "9def78e10b04b3e500178e46c5d9e374",
+>>>>>>> 8b429a9 (Added several modules and stuff)
     "packages": [
         {
             "name": "andileco/eval-math",
@@ -5099,6 +5103,7 @@
             }
         },
         {
+<<<<<<< HEAD
             "name": "drupal/entity_reference_revisions",
             "version": "1.12.0",
             "source": {
@@ -5236,6 +5241,8 @@
             }
         },
         {
+=======
+>>>>>>> 8b429a9 (Added several modules and stuff)
             "name": "drupal/extlink",
             "version": "2.0.4",
             "source": {
@@ -6071,6 +6078,9 @@
         },
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8b429a9 (Added several modules and stuff)
             "name": "drupal/inline_entity_form",
             "version": "3.0.0-rc20",
             "source": {
@@ -6164,8 +6174,11 @@
             }
         },
         {
+<<<<<<< HEAD
 =======
 >>>>>>> b33e04f (update composer and lockfile)
+=======
+>>>>>>> 8b429a9 (Added several modules and stuff)
             "name": "drupal/jquery_ui",
             "version": "1.7.0",
             "source": {
@@ -9836,10 +9849,14 @@
         {
             "name": "illuminate/collections",
 <<<<<<< HEAD
+<<<<<<< HEAD
             "version": "v11.41.0",
 =======
             "version": "v11.40.0",
 >>>>>>> a94a343 (Excluded robots.txt from scaffolding for RobotTxt module)
+=======
+            "version": "v11.41.0",
+>>>>>>> 8b429a9 (Added several modules and stuff)
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -9896,10 +9913,14 @@
         {
             "name": "illuminate/conditionable",
 <<<<<<< HEAD
+<<<<<<< HEAD
             "version": "v11.41.0",
 =======
             "version": "v11.40.0",
 >>>>>>> a94a343 (Excluded robots.txt from scaffolding for RobotTxt module)
+=======
+            "version": "v11.41.0",
+>>>>>>> 8b429a9 (Added several modules and stuff)
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -9946,10 +9967,14 @@
         {
             "name": "illuminate/contracts",
 <<<<<<< HEAD
+<<<<<<< HEAD
             "version": "v11.41.0",
 =======
             "version": "v11.40.0",
 >>>>>>> a94a343 (Excluded robots.txt from scaffolding for RobotTxt module)
+=======
+            "version": "v11.41.0",
+>>>>>>> 8b429a9 (Added several modules and stuff)
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -9998,10 +10023,14 @@
         {
             "name": "illuminate/macroable",
 <<<<<<< HEAD
+<<<<<<< HEAD
             "version": "v11.41.0",
 =======
             "version": "v11.40.0",
 >>>>>>> a94a343 (Excluded robots.txt from scaffolding for RobotTxt module)
+=======
+            "version": "v11.41.0",
+>>>>>>> 8b429a9 (Added several modules and stuff)
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -10048,6 +10077,7 @@
         {
             "name": "illuminate/support",
 <<<<<<< HEAD
+<<<<<<< HEAD
             "version": "v11.41.0",
             "source": {
                 "type": "git",
@@ -10060,16 +10090,24 @@
                 "reference": "d0234a6a1572112543af3e2e09dfab5190ed467f",
 =======
             "version": "v11.40.0",
+=======
+            "version": "v11.41.0",
+>>>>>>> 8b429a9 (Added several modules and stuff)
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "f63af42cfacf8ac3fcf3df49b06de66ff3b22ee0"
+                "reference": "d0234a6a1572112543af3e2e09dfab5190ed467f"
             },
             "dist": {
                 "type": "zip",
+<<<<<<< HEAD
                 "url": "https://api.github.com/repos/illuminate/support/zipball/f63af42cfacf8ac3fcf3df49b06de66ff3b22ee0",
                 "reference": "f63af42cfacf8ac3fcf3df49b06de66ff3b22ee0",
 >>>>>>> a94a343 (Excluded robots.txt from scaffolding for RobotTxt module)
+=======
+                "url": "https://api.github.com/repos/illuminate/support/zipball/d0234a6a1572112543af3e2e09dfab5190ed467f",
+                "reference": "d0234a6a1572112543af3e2e09dfab5190ed467f",
+>>>>>>> 8b429a9 (Added several modules and stuff)
                 "shasum": ""
             },
             "require": {
@@ -10134,10 +10172,14 @@
                 "source": "https://github.com/laravel/framework"
             },
 <<<<<<< HEAD
+<<<<<<< HEAD
             "time": "2025-01-27T00:59:08+00:00"
 =======
             "time": "2025-01-22T21:19:28+00:00"
 >>>>>>> a94a343 (Excluded robots.txt from scaffolding for RobotTxt module)
+=======
+            "time": "2025-01-27T00:59:08+00:00"
+>>>>>>> 8b429a9 (Added several modules and stuff)
         },
         {
             "name": "itamair/geophp",
@@ -10247,6 +10289,9 @@
         },
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8b429a9 (Added several modules and stuff)
             "name": "jquery/simple-color",
             "version": "1.2.3",
             "dist": {
@@ -10262,8 +10307,11 @@
             ]
         },
         {
+<<<<<<< HEAD
 =======
 >>>>>>> db01cff (add Webform external to composer.json)
+=======
+>>>>>>> 8b429a9 (Added several modules and stuff)
             "name": "jquery/textcounter",
             "version": "0.9.1",
             "dist": {
@@ -12231,6 +12279,9 @@
         },
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8b429a9 (Added several modules and stuff)
             "name": "phpxmlrpc/phpxmlrpc",
             "version": "4.11.1",
             "source": {
@@ -12291,8 +12342,11 @@
             "time": "2025-01-17T17:04:37+00:00"
         },
         {
+<<<<<<< HEAD
 =======
 >>>>>>> db01cff (add Webform external to composer.json)
+=======
+>>>>>>> 8b429a9 (Added several modules and stuff)
             "name": "popperjs/popperjs",
             "version": "2.11.6",
             "dist": {
@@ -15999,6 +16053,52 @@
             ]
         },
         {
+            "name": "szeidler/revive-xmlrpc",
+            "version": "dev-update-illuminate",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/curtistinkers/Revive-XmlRpc",
+                "reference": "16e471c6c34852804efb853ae5a213f860cd989e"
+            },
+            "require": {
+                "illuminate/support": "^8.83 || ^9.52 || ^10.48 || ^11.40",
+                "phpoption/phpoption": "^1.9",
+                "phpxmlrpc/phpxmlrpc": "^4.11",
+                "vlucas/phpdotenv": "^5.6"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Artistan\\ReviveXmlRpc\\Provider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Artistan\\ReviveXmlRpc\\": "src/"
+                }
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Charles Peterson",
+                    "email": "artistan@gmail.com"
+                }
+            ],
+            "description": "Fork of https://github.com/Artistan/Revive-XmlRpc",
+            "homepage": "https://github.com/szeidler/Revive-XmlRpc",
+            "keywords": [
+                "adsserver",
+                "api",
+                "revive",
+                "xmlrpc"
+            ],
+            "time": "2025-01-27T01:28:00+00:00"
+        },
+        {
             "name": "tabby/tabby",
             "version": "12.0.3",
             "dist": {
@@ -16557,6 +16657,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
 <<<<<<< HEAD
+<<<<<<< HEAD
         "drupal/ai_provider_ollama": 10,
         "drupal/entity_usage": 10,
         "drupal/filefield_paths": 10,
@@ -16564,6 +16665,11 @@
 =======
         "drupal/filefield_paths": 10,
 >>>>>>> b33e04f (update composer and lockfile)
+=======
+        "drupal/ai_provider_ollama": 10,
+        "drupal/filefield_paths": 10,
+        "drupal/inline_entity_form": 5,
+>>>>>>> 8b429a9 (Added several modules and stuff)
         "drupal/project_browser": 15,
         "drupal/webform": 10,
         "szeidler/revive-xmlrpc": 20

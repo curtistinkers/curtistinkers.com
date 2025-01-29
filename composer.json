@@ -10,6 +10,10 @@
         "chat": "https://drupal.org/node/314178"
     },
     "repositories": {
+        "asset-packagist": {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
         "codemirror": {
             "_webform": true,
             "type": "package",
@@ -99,6 +103,22 @@
                 "license": "MIT"
             }
         },
+        "jquery.simple-color": {
+            "type": "package",
+            "package": {
+                "name": "jquery/simple-color",
+                "version": "1.2.3",
+                "type": "drupal-library",
+                "extra": {
+                    "installer-name": "jquery-simple-color"
+                },
+                "dist": {
+                    "url": "https://github.com/recurser/jquery-simple-color/archive/refs/tags/v1.2.3.zip",
+                    "type": "zip"
+                },
+                "license": "MIT"
+            }
+        },
         "jquery.textcounter": {
             "_webform": true,
             "type": "package",
@@ -167,6 +187,10 @@
                 "license": "MIT"
             }
         },
+        "revive-xmlrpc": {
+            "type": "git",
+            "url": "https://github.com/curtistinkers/Revive-XmlRpc"
+	},
         "signature_pad": {
             "_webform": true,
             "type": "package",
@@ -179,6 +203,22 @@
                 },
                 "dist": {
                     "url": "https://github.com/szimek/signature_pad/archive/refs/tags/v2.3.0.zip",
+                    "type": "zip"
+                },
+                "license": "MIT"
+            }
+        },
+        "spectrum": {
+            "type": "package",
+            "package": {
+                "name": "spectrum-colorpicker/spectrum-colorpicker",
+                "version": "1.8.0",
+                "type": "drupal-library",
+                "extra": {
+                    "installer-name": "spectrum"
+                },
+                "dist": {
+                    "url": "https://github.com/bgrins/spectrum/archive/refs/tags/1.8.0.zip",
                     "type": "zip"
                 },
                 "license": "MIT"
@@ -222,6 +262,9 @@
     "require": {
         "codemirror/codemirror": "*",
         "composer/installers": "^2.3",
+        "drupal/ai_provider_ollama": "^1.0@beta",
+        "drupal/auto_entitylabel": "^3.4",
+        "drupal/color_field": "^3.0",
         "drupal/core-composer-scaffold": "^11.1.1",
         "drupal/core-recommended": "^11.1.1",
         "drupal/diff": "^1.8",
@@ -238,9 +281,12 @@
         "drupal/drupal_cms_project": "~1.0.0",
         "drupal/drupal_cms_seo_tools": "~1.0.1",
         "drupal/drupal_cms_starter": "~1.0.0",
+        "drupal/extlink": "^2.0",
         "drupal/filefield_paths": "^1.0@beta",
         "drupal/hreflang": "^1.15",
+        "drupal/inline_entity_form": "^3.0@RC",
         "drupal/project_browser": "@alpha",
+        "drupal/revive_adserver": "^2.0",
         "drupal/schema_metatag": "^3.0",
         "drupal/security_review": "^3.1",
         "drupal/webform": "@beta",
@@ -249,11 +295,14 @@
         "jquery/intl-tel-input": "*",
         "jquery/rateit": "*",
         "jquery/select2": "*",
+        "jquery/simple-color": "*",
         "jquery/textcounter": "*",
         "jquery/timepicker": "*",
         "popperjs/popperjs": "*",
         "progress-tracker/progress-tracker": "*",
         "signature_pad/signature_pad": "*",
+        "spectrum-colorpicker/spectrum-colorpicker": "*",
+        "szeidler/revive-xmlrpc": "dev-update-illuminate as 2.5.6",
         "tabby/tabby": "*",
         "tippyjs/tippyjs": "*"
     },
@@ -268,49 +317,30 @@
             "drupal/core-composer-scaffold": true,
             "php-http/discovery": true
         },
+        "apcu-autoloader": true,
         "sort-packages": true,
         "optimize-autoloader": true
     },
     "extra": {
         "drupal-scaffold": {
-            "locations": {
-                "web-root": "web/"
-            },
             "file-mapping": {
                 "[web-root]/robots.txt": false
+            },
+            "locations": {
+                "web-root": "web/"
             }
         },
         "installer-paths": {
-            "web/core": [
-                "type:drupal-core"
-            ],
-            "web/libraries/{$name}": [
-                "type:drupal-library"
-            ],
-            "web/modules/contrib/{$name}": [
-                "type:drupal-module"
-            ],
-            "web/profiles/contrib/{$name}": [
-                "type:drupal-profile"
-            ],
-            "web/themes/contrib/{$name}": [
-                "type:drupal-theme"
-            ],
-            "drush/Commands/contrib/{$name}": [
-                "type:drupal-drush"
-            ],
-            "web/modules/custom/{$name}": [
-                "type:drupal-custom-module"
-            ],
-            "web/profiles/custom/{$name}": [
-                "type:drupal-custom-profile"
-            ],
-            "recipes/{$name}": [
-                "type:drupal-recipe"
-            ],
-            "web/themes/custom/{$name}": [
-                "type:drupal-custom-theme"
-            ]
+            "web/core": ["type:drupal-core"],
+            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
+            "web/modules/custom/{$name}": ["type:drupal-custom-module"],
+            "web/profiles/custom/{$name}": ["type:drupal-custom-profile"],
+            "recipes/{$name}": ["type:drupal-recipe"],
+            "web/themes/custom/{$name}": ["type:drupal-custom-theme"]
         }
     }
 }
