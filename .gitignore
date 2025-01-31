@@ -12,6 +12,10 @@ composer.lock
 /web/sites/*/*settings*.php
 /web/sites/*/*services*.yml
 
+# Do not ignore common configuration files
+!/web/sites/*/settings.php
+!/web/sites/*/services.yml
+
 # Ignore paths that may contain user-generated content
 /web/sites/*/files
 /web/sites/*/public
