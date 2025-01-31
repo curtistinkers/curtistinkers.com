@@ -328,7 +328,10 @@
     "extra": {
         "drupal-scaffold": {
             "file-mapping": {
-                "[web-root]/robots.txt": false
+		"[project-root]/.editorconfig": false,
+		"[project-root]/.gitattributes": false,
+		"[project-root]/.gitignore": false,
+		"[web-root]/robots.txt": false
             },
             "locations": {
                 "web-root": "web/"
