@@ -1,5 +1,5 @@
 {
-    "name": "drupal/cms",
+    "name": "curtistinkers/curtistinkers.com",
     "version": "1.0.1",
     "description": "Drupal with a bunch of useful stuff.",
     "type": "project",
@@ -35,6 +35,10 @@
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         },
+	"drupal.core-recommended": {
+            "type": "git",
+            "url": "https://github.com/curtistinkers/core-recommended"
+	},
         "jquery.inputmask": {
             "_webform": true,
             "type": "package",
@@ -267,7 +271,7 @@
         "drupal/book": "^2.0",
         "drupal/color_field": "^3.0",
         "drupal/core-composer-scaffold": "^11.1.1",
-        "drupal/core-recommended": "^11.1.1",
+        "drupal/core-recommended": "dev-update-11.1.1-twig as 11.1.1 || ^11.1.2",
         "drupal/diff": "^1.8",
         "drupal/drupal_cms_accessibility_tools": "~1.0.0",
         "drupal/drupal_cms_ai": "~1.0.1",
@@ -308,10 +312,12 @@
         "spectrum-colorpicker/spectrum-colorpicker": "*",
         "szeidler/revive-xmlrpc": "dev-update-illuminate as 2.5.6",
         "tabby/tabby": "*",
-        "tippyjs/tippyjs": "*"
+        "tippyjs/tippyjs": "*",
+	"twig/twig": "<3.16.0 || >=3.19.0"
     },
     "conflict": {
-        "drupal/drupal": "*"
+        "drupal/drupal": "*",
+	"twig/twig": ">=3.16.0,<3.19.0"
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
