@@ -6,7 +6,7 @@
 # https://www.drupal.org/docs/develop/using-composer
 
 # Ignore private file
-/priv_test1
+composer.lock
 
 # Ignore configuration files that may contain sensitive information
 /web/sites/*/*settings*.php
