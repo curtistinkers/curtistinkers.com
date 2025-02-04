@@ -39,6 +39,10 @@
             "type": "git",
             "url": "https://github.com/curtistinkers/core-recommended"
 	},
+        "drupal.social_media_platforms": {
+	    "type": "git",
+            "url": "/var/www/social_media_platforms"
+        },
         "jquery.inputmask": {
             "_webform": true,
             "type": "package",
