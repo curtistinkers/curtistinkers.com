@@ -300,7 +300,7 @@
         "drupal/revive_adserver": "^2.0",
         "drupal/schema_metatag": "^3.0",
         "drupal/security_review": "^3.1",
-	"drupal/social_media_platforms": "dev-move-domain-to-suggested as 1.0.3",
+	"drupal/social_media_platforms": "dev-rotate-social-bar-images as 1.0.3",
         "drupal/views_simple_math_field": "^3.0",
         "drupal/webform": "@beta",
         "drush/drush": "^13",
