@@ -298,6 +298,7 @@
         "drupal/filefield_paths": "^1.0@beta",
         "drupal/hreflang": "^1.15",
         "drupal/inline_entity_form": "^3.0@RC",
+        "drupal/matomo": "^2.0@alpha",
         "drupal/paragraphs": "^1.18",
         "drupal/project_browser": "^2.0@alpha",
         "drupal/revive_adserver": "^2.0",
