@@ -14,10 +14,6 @@
             "type": "composer",
             "url": "https://asset-packagist.org"
         },
-	"drupal.core-recommended": {
-            "type": "git",
-            "url": "https://github.com/curtistinkers/core-recommended"
-        },
         "drupal.social_media_platforms": {
             "type": "git",
             "url": "https://github.com/curtistinkers/social_media_platforms-drupal-module.git"
@@ -277,8 +273,8 @@
         "drupal/config_devel": "^1.10",
         "drupal/config_inspector": "^2.1",
         "drupal/config_split": "^2.0",
-        "drupal/core-composer-scaffold": "^11.1.1",
-        "drupal/core-recommended": "dev-update-11.1.1-twig as 11.1.1 || ^11.1.2",
+        "drupal/core-composer-scaffold": "^11.1",
+        "drupal/core-recommended": "^11.1",
         "drupal/diff": "^1.8",
         "drupal/drupal_cms_accessibility_tools": "~1.0.0",
         "drupal/drupal_cms_ai": "~1.0.1",
