@@ -1,0 +1,82 @@
+title: curtistinkers
+baseline: 'My weblog'
+baseurl: /
+description: 'A website created with Cecil static site generator.'
+author:
+  name: curtistinkers
+  url: 'https://curtistinkers.com'
+image: icon.png
+social:                                 # used by social networks meta
+  twitter:                                # used by Twitter/X Card
+    url: https://x.com/curtistinkers      # used for `rel=me` link
+    site: username                        # site username
+    creator: username                     # page author username
+  # mastodon:                             # used by Mastodon meta
+  #   url: <URL>                            # used for `rel=me` link
+  #   creator: handle                       # page author account
+  facebook:                             # used by Facebook meta
+    url: https://facebook/curtistinkers   # used for `rel=me` link
+    # id:                                   # Facebook profile ID
+    username: curtistinkers               # page author username
+metatags:
+  title:                   # title options
+    divider: " &middot; "    # string between page title and site title
+    only: false              # displays page title only (`false` by default)
+    pagination:              # pagination options
+      shownumber: true         # displays page number in title (`true` by default)
+      label: "Page %s"         # how to display page number (`Page %s` by default)
+  robots: "index,follow"   # web crawlers directives (`index,follow` by default)
+  favicon:                 # favicon options
+    enabled: false            # includes favicon (`true` by default)
+    image: favicon.png       # path to favicon image
+    sizes:                   # sizes by device
+      - "icon": [32, 57, 76, 96, 128, 192, 228]  # web browsers
+      - "shortcut icon": [196]                   # Android
+      - "apple-touch-icon": [120, 152, 180]      # iOS
+  navigation: true         # includes previous and next links (`true` by default)
+  image: true              # includes image (`true` by default)
+  og: true                 # includes Open Graph meta tags (`true` by default)
+  articles: "blog"         # articles' section (`blog` by default)
+  twitter: true            # includes Twitter/X Card meta tags (`true` by default)
+  mastodon: true           # includes Mastodon meta tags (`true` by default)
+  dc: true                # includes Dublin Core meta tags (`false` by default)
+  data: true              # includes JSON-LD structured data (`false` by default)
+pages:
+  pagination:
+    max: 10     # maximum number of entries per page
+    path: page  # path to the paginated page
+  paths:
+    - section: blog
+      path: :section/:year/:month/:day/:slug  # e.g.: /blog/2020/12/my-post/
+  body:
+    images:
+      resize: 0         # resizes all images to <width> (in pixels, `0` to disable)
+      responsive: true  # adds responsive image variants to the `srcset` attribute (`false` by default)
+      caption: true     # puts the image in a <figure> element and adds a <figcaption> containing the title (`false` by default)
+      class: ''         # sets a default class on each image (empty by default)
+      dark_suffix: ''   # suffix of the dark variant image (e.g. `.dark`), disabled by default
+    links:
+      embed:
+        enabled: true                     # turns links in embedded content if possible (`false` by default)
+        video: [mp4, ogg, webm]             # video files extensions
+        audio: [mp4, aac, ogg, flac, mp3]   # audio files extensions
+      external:
+        blank: true      # if true open external link in new tab
+  virtual:
+    - path: code
+      redirect: https://github.com/curtistinkers
+  default:
+    xsl/rss:
+      published: true
+# theme: curtistinkers
+date:
+  format: D, j M, Y
+taxonomies:
+  tags: tag
+  categories: category
+menus:
+  main:
+    - id: github
+      name: GitHub
+      url: https://github.com/curtistinkers
+      weight: 100

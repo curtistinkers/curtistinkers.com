@@ -1,0 +1,20 @@
+{
+  "name": "curtistinkers.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "curtistinkers",
+  "license": "MIT",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "autoprefixer": "^10.6.1",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^4.3.3"
+  },
+  "scripts": {
+    "tailwind:watch": "npx @tailwindcss/cli -i ./assets/css/main.css -o ./assets/css/tailwind.css --watch",
+    "tailwind:build": "npx @tailwindcss/cli -i ./assets/css/main.css -o ./assets/css/tailwind.css --minify",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
