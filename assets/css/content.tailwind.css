@@ -1,0 +1,77 @@
+/** CSS for nodes **/
+
+/* Add spacing to content section header */
+.content-bibliography h2,
+.content-tags h2,
+.content-comments h2 {
+  @apply mt-5 mb-3;
+}
+
+/* Add change heading size on sub-content and override spacing */
+.content-bibliography h2,
+.content-tags h2 {
+  @apply text-xl md:text-2xl mt-5 mb-1;
+}
+
+/** Comments **/
+.field-comment article {
+  @apply mt-7 mb-10 p-2;
+}
+
+.field-comment article h3 {
+  @apply mt-1 mb-2;
+}
+
+.field-comment article footer p {
+  @apply m-0;
+}
+
+.field-comment div.indented {
+  @apply ml-12;
+}
+
+.field-comment article:nth-of-type(even) {
+  @apply bg-muted;
+}
+
+.field-comment div.indented article {
+  @apply border-l;
+}
+
+.content-comments .field--name-subject,
+.page--comment--reply form.comment-form .field--name-subject,
+.page--comment--reply--node--field-comments--\% .field--name-subject {
+  /* @apply py-4; */
+}
+
+.content-comments .field--name-comment-body,
+.page--comment--reply form.comment-form .field--name-comment-body,
+.page--comment--reply--node--field-comments--\% .field--name-comment-body {
+  /* @apply pt-4 pb-8; */
+}
+
+.page--comment--reply form.comment-form {
+  /* @apply relative flex flex-col items-stretch mx-auto lg:max-w-1/2 pb-12; */
+}
+
+
+/** End comments **/
+
+
+/** Tags section **/
+.content-tags .field--node--field-tags ul {
+  @apply flex list-none gap-3 p-0;
+}
+
+.content-tags .field--node--field-tags:has(div.inline h2) {
+  @apply flex flex-wrap items-center my-8;
+}
+
+.content-tags .field--node--field-tags:has(div.inline h2) ul {
+  @apply pl-5;
+}
+
+.content-tags .field--node--field-tags .inline h2 {
+  @apply my-0;
+}
+/** End tags section **/

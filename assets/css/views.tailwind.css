@@ -1,0 +1,51 @@
+/** CSS for nodes **/
+
+
+a.add-content-by-bundle {
+  @apply px-6 py-3 rounded-xl border text-lg;
+  @apply transition duration-300 ease-in-out;
+}
+
+a.add-content-by-bundle-page {
+  @apply mt-6 md:mt-8 xl:mt-10;
+}
+
+a.add-content-by-bundle-block {
+  @apply mt-0 md:mb-8 xl:mb-10;
+}
+
+a.add-content-by-bundle-primary {
+  @apply inline-block bg-primary text-primary-foreground border-transparent;
+  @apply hover:bg-primary-foreground hover:text-primary hover:border-primary;
+  @apply focus:bg-primary-foreground focus:text-primary focus:border-primary;
+}
+
+a.add-content-by-bundle-primary-inverse {
+  @apply inline-block bg-primary-foreground text-primary;
+  @apply hover:bg-primary hover:text-primary-foreground hover:border-transparent;
+  @apply focus:bg-primary focus:text-primary-foreground focus:border-transparent;
+}
+
+a.add-content-by-bundle-secondary {
+  @apply inline-block bg-secondary text-secondary-foreground border-transparent;
+  @apply hover:bg-secondary-foreground hover:text-secondary hover:border-secondary;
+  @apply focus:bg-secondary-foreground focus:text-secondary focus:border-secondary;
+}
+
+a.add-content-by-bundle-secondary-inverse {
+  @apply inline-block bg-secondary-foreground text-secondary;
+  @apply hover:bg-secondary hover:text-secondary-foreground hover:border-transparent;
+  @apply focus:bg-secondary focus:text-secondary-foreground focus:border-transparent;
+}
+
+a.add-content-by-bundle-accent {
+  @apply inline-block bg-accent-foreground text-accent border-transparent;
+  @apply hover:bg-accent hover:text-accent-foreground hover:border-accent-foreground;
+  @apply focus:bg-accent focus:text-accent-foreground focus:border-accent-foreground;
+}
+
+a.add-content-by-bundle-accent-inverse {
+  @apply inline-block bg-accent text-accent-foreground;
+  @apply hover:bg-accent-foreground hover:text-accent hover:border-transparent;
+  @apply focus:bg-accent-foreground focus:text-accent focus:border-transparent;
+}

@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/* @import "../components/anchor/anchor.tailwind.css";
+@import "../components/hero-blog/hero-blog.tailwind.css";
+@import "../components/navbar/navbar.tailwind.css"; */
+
+@import "./content.tailwind.css";
+@import "./views.tailwind.css";
+@import "./webform.tailwind.css";
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

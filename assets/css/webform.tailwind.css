@@ -1,0 +1,10 @@
+.webform-submission-newsletter-sign-up-form fieldset.captcha {
+  legend.captcha__title,
+  div.captcha__description {
+    @apply sr-only;
+  }
+}
+
+.webform-submission-contact-form .webform-type-tel div.iti {
+  @apply w-full;
+}
