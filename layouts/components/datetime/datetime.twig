@@ -1,0 +1,23 @@
+{% set datetime_display_format = display_format|default('fallback') %}
+
+{% if datetime_display_format == 'short_date_only' %}
+  {% set time_datetime = timestamp|format_date('html_date') %}
+  {% set time_title    = timestamp|format_date('long_date_only') %}
+  {% set time_display  = timestamp|format_date('short_date_only') %}
+{% elseif datetime_display_format == 'medium_date_only' %}
+  {% set time_datetime = timestamp|format_date('html_date') %}
+  {% set time_title    = timestamp|format_date('long_date_only') %}
+  {% set time_display  = timestamp|format_date('medium_date_only') %}
+{% elseif datetime_display_format == 'long_date_only' %}
+  {% set time_datetime = timestamp|format_date('html_date') %}
+  {% set time_title    = timestamp|format_date('long_date_only') %}
+  {% set time_display  = timestamp|format_date('long_date_only') %}
+{% else %}
+  {% set time_datetime = timestamp|format_date('html_datetime') %}
+  {% set time_title    = timestamp|format_date('long') %}
+  {% set time_display  = timestamp|format_date(datetime_display_format) %}
+{% endif %}
+
+<span>
+  <time datetime="{{ time_datetime }}" title="{{ time_title }}">{{ time_display }}</time>
+</span>

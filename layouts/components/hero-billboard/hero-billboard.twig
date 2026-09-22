@@ -1,0 +1,315 @@
+{% set hero_height = height|default('full') %}
+{% set hero_flex_position = flex_position|default('center-left') %}
+{% set hero_overlay_opacity = overlay_opacity|default('40%') %}
+{% set hero_overlay_color = overlay_color|default('black') %}
+{% set hero_object_position = object_position|default('center') %}
+
+{# Normalize classes - handle both array and string formats #}
+{% set additional_classes = classes|default('') %}
+{% if additional_classes is iterable %}
+  {% set additional_classes = additional_classes|join(' ') %}
+{% endif %}
+
+{% set hero_variants =
+  html_cva(
+    base: ['hero-overlay', 'relative', 'flex', 'flex-col'],
+    variants: {
+      height: {
+        full: 'h-dvh',
+        jumbo: ['h-7/8', 'min-h-[600px]', 'md:max-h-[750px]', 'xl:max-h-[1050px]'],
+        large: ['h-3/4', 'min-h-[500px]', 'md:max-h-[600px]', 'xl:max-h-[800px]'],
+        ribbon: ['h-1/2', 'md:min-h-[400px]', 'md:max-h-[450px]', 'xl:max-h-[600px]']
+      },
+      flexPosition: {
+        'top-left': 'justify-start',
+        'center-left': 'justify-center-safe',
+        'bottom-left': 'justify-end',
+        'hero-center': 'justify-center'
+      }
+    }
+  )
+%}
+
+{% set overlay_variants =
+  html_cva(
+    base: ['absolute', 'inset-0'],
+    compound_variants: [
+        {
+            opacity: '0%',
+            color: 'white',
+            class: 'bg-white/0'
+        },
+        {
+            opacity: '20%',
+            color: 'white',
+            class: 'bg-white/20'
+        },
+        {
+            opacity: '40%',
+            color: 'white',
+            class: 'bg-white/75'
+        },
+        {
+            opacity: '60%',
+            color: 'white',
+            class: 'bg-white/75'
+        },
+        {
+            opacity: '75%',
+            color: 'white',
+            class: 'bg-white/75'
+        },
+        {
+            opacity: '90%',
+            color: 'white',
+            class: 'bg-white/90'
+        },
+        {
+            opacity: '0%',
+            color: 'black',
+            class: 'bg-black/0'
+        },
+        {
+            opacity: '20%',
+            color: 'black',
+            class: 'bg-black/20'
+        },
+        {
+            opacity: '40%',
+            color: 'black',
+            class: 'bg-black/75'
+        },
+        {
+            opacity: '60%',
+            color: 'black',
+            class: 'bg-black/75'
+        },
+        {
+            opacity: '75%',
+            color: 'black',
+            class: 'bg-black/75'
+        },
+        {
+            opacity: '90%',
+            color: 'black',
+            class: 'bg-black/90'
+        },
+        {
+            opacity: '0%',
+            color: 'primary',
+            class: 'bg-primary/0'
+        },
+        {
+            opacity: '20%',
+            color: 'primary',
+            class: 'bg-primary/20'
+        },
+        {
+            opacity: '40%',
+            color: 'primary',
+            class: 'bg-primary/75'
+        },
+        {
+            opacity: '60%',
+            color: 'primary',
+            class: 'bg-primary/75'
+        },
+        {
+            opacity: '75%',
+            color: 'primary',
+            class: 'bg-primary/75'
+        },
+        {
+            opacity: '90%',
+            color: 'primary',
+            class: 'bg-primary/90'
+        },
+        {
+            opacity: '0%',
+            color: 'secondary',
+            class: 'bg-secondary/0'
+        },
+        {
+            opacity: '20%',
+            color: 'secondary',
+            class: 'bg-secondary/20'
+        },
+        {
+            opacity: '40%',
+            color: 'secondary',
+            class: 'bg-secondary/75'
+        },
+        {
+            opacity: '60%',
+            color: 'secondary',
+            class: 'bg-secondary/75'
+        },
+        {
+            opacity: '75%',
+            color: 'secondary',
+            class: 'bg-secondary/75'
+        },
+        {
+            opacity: '90%',
+            color: 'secondary',
+            class: 'bg-secondary/90'
+        },
+        {
+            opacity: '0%',
+            color: 'accent',
+            class: 'bg-accent/0'
+        },
+        {
+            opacity: '20%',
+            color: 'accent',
+            class: 'bg-accent/20'
+        },
+        {
+            opacity: '40%',
+            color: 'accent',
+            class: 'bg-accent/75'
+        },
+        {
+            opacity: '60%',
+            color: 'accent',
+            class: 'bg-accent/75'
+        },
+        {
+            opacity: '75%',
+            color: 'accent',
+            class: 'bg-accent/75'
+        },
+        {
+            opacity: '90%',
+            color: 'accent',
+            class: 'bg-accent/90'
+        },
+        {
+            opacity: '0%',
+            color: 'accent-foreground',
+            class: 'bg-accent-foreground/0'
+        },
+        {
+            opacity: '20%',
+            color: 'accent-foreground',
+            class: 'bg-accent-foreground/20'
+        },
+        {
+            opacity: '40%',
+            color: 'accent-foreground',
+            class: 'bg-accent-foreground/75'
+        },
+        {
+            opacity: '60%',
+            color: 'accent-foreground',
+            class: 'bg-accent-foreground/75'
+        },
+        {
+            opacity: '75%',
+            color: 'accent-foreground',
+            class: 'bg-accent-foreground/75'
+        },
+        {
+            opacity: '90%',
+            color: 'accent-foreground',
+            class: 'bg-accent-foreground/90'
+        },
+    ]
+  )
+%}
+
+{# {% set overlay_variants =
+  html_cva(
+    base: ['absolute', 'inset-0'],
+    variants: {
+      opacity: {
+        '0%': "bg-#{ hero_overlay_color }//0",
+        '20%': "bg-#{ hero_overlay_color }/20",
+        '40%': "bg-#{ hero_overlay_color }/40",
+        '60%': "bg-#{ hero_overlay_color }/60",
+        '75%': "bg-#{ hero_overlay_color }/75",
+        '90%': "bg-#{ hero_overlay_color }/90"
+      }
+    }
+  )
+%} #}
+
+{% set image_variants =
+  html_cva(
+    base: ['h-full', 'w-full', 'object-cover'],
+    variants: {
+      position: {
+        top: 'object-top',
+        center: 'object-center',
+        bottom: 'object-bottom'
+      }
+    }
+  )
+%}
+
+{% set content_variants =
+  html_cva(
+    base: ['hero-overlay--content', 'relative', 'z-1', 'flex', 'flex-col', 'gap-6', 'py-6', 'md:py-10', 'xl:py-20'],
+    variants: {
+      flexPosition: {
+        'top-left': 'lg:max-w-2/3',
+        'center-left': 'lg:max-w-2/3',
+        'bottom-left': 'lg:max-w-2/3',
+        'hero-center': ['text-center', 'items-center', 'lg:mx-auto', 'lg:max-w-2/3']
+      }
+    }
+  )
+%}
+
+<section
+  class="{{
+  hero_variants.apply(
+    {
+      height: hero_height,
+      flexPosition: hero_flex_position
+    },
+    additional_classes
+  )
+  }}"
+>
+  {% if media.src is not empty %}
+    <div class="hero-overlay--media absolute z-[-1] h-full w-full">
+      {% block hero_media %}
+        {% if media.src is not empty %}
+          <div
+            class="{{
+            overlay_variants.apply({
+              opacity: hero_overlay_opacity,
+              color: hero_overlay_color
+            })
+            }}"
+          ></div>
+        {% endif %}
+        {% include 'canvas:image' ignore missing with {
+          src: media.src,
+          alt: media.alt,
+          width: media.width,
+          height: media.height,
+          class: image_variants.apply({
+            position: hero_object_position
+          })
+        } only %}
+      {% endblock %}
+    </div>
+  {% endif %}
+  <div class="container mx-auto px-4">
+    <div
+      class="{{
+      content_variants.apply({
+        flexPosition: hero_flex_position
+      })
+      }}"
+    >
+      {% block hero_content %}
+        {% block hero_slot %}
+
+        {% endblock %}
+      {% endblock %}
+    </div>
+  </div>
+</section>

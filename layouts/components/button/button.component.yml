@@ -1,0 +1,111 @@
+$schema: "https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json"
+name: Button
+group: Base
+status: stable
+props:
+  type: object
+  required:
+    - variant
+    - size
+  properties:
+    variant:
+      type: string
+      title: Style
+      enum:
+        - primary
+        - secondary
+        - destructive
+        - primary-inverted
+        - secondary-inverted
+        - destructive-inverted
+      meta:enum:
+        primary: Primary
+        secondary: Secondary
+        destructive: Destructive
+        primary-inverted: Primary inverted
+        secondary-inverted: Secondary inverted
+        destructive-inverted: Destructive inverted
+      examples:
+        - primary
+    label:
+      type: string
+      title: Label
+      default: "Button label"
+      examples:
+        - "Button label"
+    href:
+      type: string
+      title: Link
+    size:
+      type: string
+      title: Button size
+      enum:
+        - small
+        - medium
+        - large
+      meta:enum:
+        small: Small
+        medium: Medium
+        large: Large
+      examples:
+        - medium
+    icon:
+      type: string
+      title: Icon
+      enum:
+        - arrow-right
+        - arrow-left
+        - caret-right
+        - caret-left
+        - download
+        - user-plus
+        - trash
+        - cursor-text
+        - pencil
+        - tag
+        - tag-simple
+        - hash
+        - hash-straight
+        - kanban
+        - note-pencil
+        - paper-plane-tilt
+        - money
+        - money-wavy
+      meta:enum:
+        arrow-right: Arrow right
+        arrow-left: Arrow left
+        caret-right: Caret right
+        caret-left: Caret left
+        download: Download
+        user-plus: User plus
+        trash: Trash
+        cursor-text: Cursor text
+        pencil: Pencil
+        tag: Tag
+        tag-simple: Simple tag
+        hash: Hash
+        hash-straight: Straight hash
+        kanban: Kanban board
+        note-pencil: Note pencil
+        paper-plane-tilt: Tilted paper plane
+        money: Money
+        money-wavy: Wavy money
+      examples:
+        - arrow-right
+    mobile_width:
+      type: boolean
+      title: Full width on mobile
+      default: false
+    icon_first:
+      type: boolean
+      title: Display icon first
+      default: false
+      examples:
+        - false
+    disabled:
+      type: boolean
+      title: Disabled
+      default: false
+      examples:
+        - false
+        - true

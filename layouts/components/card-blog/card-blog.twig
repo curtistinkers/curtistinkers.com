@@ -1,0 +1,294 @@
+{% set card_orientation = orientation|default('vertical') %}
+{% set card_style = style|default('framed') %}
+{% set card_background = background|default('noColor') %}
+{% set heading_text_level = heading_level|default(2) %}
+
+{% set is_text_centered = is_text_centered|default(false) ? 'yes' : 'no' %}
+{% set is_clickable = url is not empty and url != 'No URL' ? 'yes' : 'no' %}
+
+{% set has_author = author is not empty ? 'yes' : 'no' %}
+{% set has_date = date is not empty ? 'yes' : 'no' %}
+{% set has_media = media.src is not empty ? 'yes' : 'no' %}
+{% set has_text = text is not empty ? 'yes' : 'no' %}
+{% set has_url = url is not empty and url != 'No URL' ? 'yes' : 'no' %}
+
+{% if date is not empty %}
+  {% set date_formatted %}
+    <span>
+      <time datetime="{{ date|format_date('html_datetime') }}" title="{{ date|format_date('long') }}">{{ date|format_date('short') }}</time>
+    </span>
+  {% endset %}
+{% endif %}
+{# @TODO Look into adding heading URL extra classes property #}
+
+{% set card =
+  html_cva(
+    base: ['group relative flex rounded-xl shadow-lg in-[.views-row]:h-full mb-8'],
+    variants: {
+      orientation: {
+        vertical: 'flex-col',
+        horizontal: 'md:flex-row'
+      },
+      isTextCentered: {
+        yes: 'text-center',
+        no: 'text-left'
+      },
+      clickable: {
+        yes: 'cursor-pointer transition duration-300 hover:scale-103',
+        no: ''
+      },
+      style: {
+        framed: 'gap-4 p-4 lg:gap-4 lg:p-6',
+        full: ''
+      },
+      backgroundColor: {
+        default:  'bg-card text-card-foreground hover:bg-card/80 hover:text-card-foreground/80',
+        inverted: 'bg-foreground text-background hover:bg-foreground/80 hover:text-background/80',
+        primary:            'bg-primary text-primary-foreground hover:bg-primary/80 hover:text-primary-foreground/80',
+        'primary-inverted': 'bg-primary-foreground text-primary hover:bg-primary-foreground/80 hover:text-primary/80',
+        secondary:            'bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:text-secondary-foreground/80',
+        'secondary-inverted': 'bg-secondary-foreground text-secondary hover:bg-secondary-foreground/80 hover:text-secondary/80',
+        accent:            'bg-accent text-accent-foreground hover:bg-accent/80 hover:text-accent-foreground/80',
+        'accent-inverted': 'bg-accent-foreground text-accent hover:bg-accent-foreground/80 hover:text-accent/80',
+        muted:            'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-muted-foreground/80',
+        'muted-inverted': 'bg-muted-foreground text-muted hover:bg-muted-foreground/80 hover:text-muted',
+        destructive:            'bg-destructive text-destructive-foreground hover:bg-destructive/80 hover:text-destructive-foreground/80',
+        'destructive-inverted': 'bg-destructive-foreground text-destructive hover:bg-destructive-foreground/80 hover:text-destructive/80',
+        noColor: 'shadow-none hover:text-foreground/80'
+      }
+    },
+    compound_variants: [
+      {
+        style: ['framed'],
+        backgroundColor: ['noColor'],
+        class: 'border border-secondary hover:border-secondary/80'
+      }
+    ]
+  )
+%}
+
+{% set card_media =
+  html_cva(
+    base: 'aspect-video overflow-hidden',
+    variants: {
+      orientation: {
+        vertical: '',
+        horizontal: 'md:aspect-auto md:flex-[0_1_50%]'
+      },
+      style: {
+        framed: 'rounded-lg',
+        full: 'rounded-xl'
+      }
+    }
+  )
+%}
+
+{% set card_content =
+  html_cva(
+    base: 'flex w-full flex-col items-baseline',
+    variants: {
+      orientation: {
+        vertical: '',
+        horizontal: ''
+      },
+      style: {
+        framed: '',
+        full: 'rounded-b p-4 lg:p-6'
+      },
+      hasMedia: {
+        yes: '',
+        no: ''
+      }
+    },
+    compound_variants: [
+      {
+        orientation: ['horizontal'],
+        style: ['full'],
+        class: 'p-4 lg:p-6'
+      },
+      {
+        orientation: ['horizontal'],
+        style: ['framed'],
+        class: ''
+      },
+      {
+        orientation: ['vertical'],
+        backgroundColor: ['noColor'],
+        style: ['full'],
+        class: 'px-0!'
+      },
+      {
+        orientation: ['horizontal'],
+        backgroundColor: ['noColor'],
+        style: ['full'],
+        class: 'py-0!'
+      },
+      {
+        orientation: ['horizontal'],
+        hasMedia: ['yes'],
+        class: 'md:flex-[0_1_50%]'
+      }
+    ]
+  )
+%}
+
+{# {% set heading_class_attr = "text-xl font-semibold @sm:text-2xl @2xl:text-3xl" %} #}
+
+{% set heading_variants =
+  html_cva(
+    variants: {
+      textSize: {
+        'heading-responsive-8xl': 'heading-responsive-8xl',
+        'heading-responsive-7xl': 'heading-responsive-7xl',
+        'heading-responsive-6xl': 'heading-responsive-6xl',
+        'heading-responsive-5xl': 'heading-responsive-5xl',
+        'heading-responsive-4xl': 'heading-responsive-4xl',
+        'heading-responsive-3xl': 'heading-responsive-3xl',
+        'heading-responsive-2xl': 'heading-responsive-2xl',
+        'heading-responsive-xl': 'heading-responsive-xl'
+      }
+    }
+  )
+%}
+
+{% set url_variants =
+  html_cva(
+    variants: {
+      hasUrl: {
+        'yes': "after:absolute after:inset-0 after:content-['']",
+        'no': ''
+      }
+    }
+  )
+%}
+
+{% set heading_class_attr =
+  heading_variants.apply(
+    {
+      textSize: heading_text_size
+    }
+  )
+%}
+
+{% set url_class_attr =
+  url_variants.apply(
+    {
+      hasUrl: has_url
+    }
+  )
+%}
+
+{% set heading_content %}
+  {% if has_url == 'yes' %}
+    <a href="{{ url }}" class="{{ url_class_attr }}">{{ heading_text }}</a>
+  {% else %}
+    {{ heading_text }}
+  {% endif %}
+{% endset %}
+
+<div
+  class="{{
+  card.apply(
+    {
+      orientation: card_orientation,
+      isTextCentered: is_text_centered,
+      clickable: is_clickable,
+      style: card_style,
+      backgroundColor: card_background
+    },
+    card_classes|default('')
+  )
+  }}"
+>
+  {% if media.src is not empty %}
+    <div
+      class="{{
+      card_media.apply({
+        orientation: card_orientation,
+        style: card_style,
+        backgroundColor: card_background
+      })
+      }}"
+    >
+      {% block media %}
+        {% include 'canvas:image' ignore missing with {
+          src: media.src,
+          alt: media.alt,
+          class: 'object-cover w-full h-full',
+          width: media.width,
+          height: media.height,
+          sizes: card_orientation == 'stacked' ? 'auto, 100vw' : '50vw'
+        } only %}
+      {% endblock %}
+    </div>
+  {% endif %}
+
+  <div
+    class="{{
+    card_content.apply({
+      orientation: card_orientation,
+      style: card_style,
+      backgroundColor: card_background,
+      hasMedia: has_media
+    })
+    }}"
+  >
+    <div class="@container flex w-full flex-col gap-1 md:gap-2">
+
+      {# Heading text #}
+      <h{{ heading_text_level }} class="{{ heading_class_attr }}">{{ heading_content }}</h{{ heading_text_level }}>
+
+      {# {% if heading_text_level == 1 %}
+        <h{{ heading_text_level }}>1 class="{{ heading_class_attr }}">{{ heading_content }}</h1>
+      {% elseif heading_text_level == 2 %}
+        <h2 class="{{ heading_class_attr }}">{{ heading_content }}</h2>
+      {% elseif heading_text_level == 3 %}
+        <h3 class="{{ heading_class_attr }}">{{ heading_content }}</h3>
+      {% elseif heading_text_level == 4 %}
+        <h4 class="{{ heading_class_attr }}">{{ heading_content }}</h4>
+      {% elseif heading_text_level == 5 %}
+        <h5 class="{{ heading_class_attr }}">{{ heading_content }}</h5>
+      {% elseif heading_text_level == 6 %}
+        <h6 class="{{ heading_class_attr }}">{{ heading_content }}</h6>
+      {% endif %} #}
+
+      {# Published on #}
+      {% if has_date == 'yes' %}
+        {{ include('curtistinkers_theme:text',
+          {
+            'text': "Published on #{date_formatted}"|t,
+            'text_size': 'normal',
+            'text_color': 'default'
+          },
+          with_context: false
+        ) }}
+      {% endif %}
+      {# End published on #}
+
+      {% if has_author == 'yes' %}
+        {{ include('curtistinkers_theme:text',
+          {
+            'text': 'By @author'|t({'@author': author|default('Anonymous')}),
+            'text_size': 'normal',
+            'text_color': 'default'
+          },
+          with_context: false
+        ) }}
+      {% endif %}
+
+      {% if has_text == 'yes' %}
+        {# <p class="mb-0 text-md @sm:text-lg @2xl:text-xl">
+          {{ text }}
+        </p> #}
+        {{ include('curtistinkers_theme:text',
+          {
+            'text': text,
+            'text_size': 'normal',
+            'text_color': 'default'
+          },
+          with_context: false
+        ) }}
+      {% endif %}
+    </div>
+  </div>
+</div>

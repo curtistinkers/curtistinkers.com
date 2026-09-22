@@ -1,0 +1,57 @@
+{# For an explanation of the [&>*:] syntax @see https://medium.com/@replynamanjain/tailwind-css-targeting-child-elements-b60c0ca11652 #}
+{% set text_text_color = text_color|default('default') %}
+{% set text_text_size = text_size|default('normal') %}
+{% set text_text_font_type = text_font_type|default('sans') %}
+
+{% set text_component =
+  html_cva(
+    base: [
+      '[&_h2]:mt-8 [&_h2]:mb-6 [&_h3]:mt-6 [&_h3]:mb-4 [&_h4]:mt-4 [&_h4]:mb-2 [&_h5]:my-2 [&_h6]:my-2',
+      '[&_li]:mb-1 [&_ol]:my-4 [&_ol]:list-decimal [&_ul]:my-4',
+      '[&>*:first-child]:mt-0 [&>*:last-child]:mb-0',
+      '[&_a]:underline [&_a]:underline-offset-2'
+    ],
+    variants: {
+      textColor: {
+        default:  'text-foreground [&_a]:hover:text-accent',
+        inverted: 'text-background [&_a]:hover:text-muted',
+        primary:            'text-primary-foreground [&_a]:hover:text-accent-foreground/75',
+        'primary-inverted': 'text-primary [&_a]:hover:text-primary/75',
+        secondary:            'text-secondary-foreground [&_a]:hover:text-secondary-foreground/75',
+        'secondary-inverted': 'text-secondary [&_a]:hover:text-secondary/75',
+        accent:            'text-accent-foreground [&_a]:hover:text-accent-foreground/75',
+        'accent-inverted': 'text-accent [&_a]:hover:text-accent/75',
+        muted:            'text-muted-foreground [&_a]:hover:text-muted-foreground/75',
+        'muted-inverted': 'text-muted [&_a]:hover:text-muted/75',
+        destructive:            'text-destructive-foreground [&_a]:hover:text-destructive-foreground/75',
+        'destructive-inverted': 'text-destructive [&_a]:hover:text-destructive/75'
+      },
+      textSize: {
+        'text-xs': 'text-xs xl:text-sm 2xl:text-md',
+        'text-sm': 'text-sm xl:text-md 2xl:text-lg',
+        normal: 'text-base xl:text-lg 2xl:text-xl',
+        'text-lg': 'text-lg xl:text-xl 2xl:text-2xl',
+        'text-xl': 'text-xl xl:text-2xl 2xl:text-3xl',
+        'text-2xl': 'text-2xl xl:text-3xl 2xl:text-4xl',
+        'text-3xl': 'text-3xl xl:text-4xl 2xl:text-5xl'
+      },
+      textFontType: {
+        sans: 'font-sans',
+        serif: 'font-serif',
+        mono: 'font-mono'
+      }
+    }
+  )
+%}
+
+{% set text_classes =
+  text_component.apply({
+    textColor: text_text_color,
+    textSize: text_text_size,
+    textFontType: text_text_font_type
+  })
+%}
+
+<div class="{{ text_classes }}">
+  {{ text }}
+</div>

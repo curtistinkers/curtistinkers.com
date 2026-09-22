@@ -1,0 +1,35 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Datetime
+description: Display unix timestamps in semantic HTML <time> element.
+status: experimental
+noUi: true
+group: Base
+props:
+  type: object
+  required:
+    - timestamp
+  properties:
+    timestamp:
+      type: number
+      title: Unix timestamp
+      # 2026-02-12
+      default: 1770856866
+      examples:
+        - 1770856866
+    display_format:
+      type: string
+      title: Display format
+      enum:
+        - short
+        - medium
+        - long
+        - date_only
+      meta:enum:
+        short: Short date & time
+        medium: Medium date & time
+        long: Long date & time
+        short_date_only: Short date only
+        medium_date_only: Medium date only
+        long_date_only: Long date only
+      examples:
+        - short

@@ -1,0 +1,91 @@
+
+{# TODO implement heading_font_type #}
+
+{% set author_date_text_font_type = text_font_type|default('serif') %}
+{% set published_date_text_font_type = text_font_type|default('serif') %}
+
+{% set published_date = include('curtistinkers_theme:datetime', { timestamp: date, display_format: date_format }, with_context = false ) %}
+
+
+{% set classes = classes|default([])|merge(
+  [
+    'hero-blog',
+    'relative',
+    'flex',
+    'flex-col',
+    'items-stretch',
+    'mx-auto',
+    'mt-0',
+    'mb-6',
+    'md:mb-7',
+    'xl:mb-8',
+    'pt-4',
+    'pb-4',
+    'text-foreground'
+  ]
+)|filter(v => v is not empty) %}
+
+<section class="{{ classes|join(' ') }}">
+
+  <div class="hero-blog--content container mx-auto flex flex-col gap-8 px-6 md:w-full md:gap-12 lg:w-10/12 xl:w-8/12">
+
+    {% if display_submitted %}
+      {% block published_date %}
+        {{ include('curtistinkers_theme:text',
+          {
+            text: "#{published_date}"|t,
+            text_size: 'normal',
+            text_color: 'default',
+            text_font_type: published_date_text_font_type
+          },
+          with_context: false
+        ) }}
+      {% endblock %}
+    {% endif %}
+
+    {% block title %}
+      {{
+        include(
+          'curtistinkers_theme:heading',
+          {
+            heading_text: heading_text|default(''),
+            level: heading_level|default(1),
+            url: 'No URL',
+            text_color: heading_color|default('default'),
+            text_size: 'default',
+            align: heading_align|default('left')
+          },
+          with_context: false
+        )
+      }}
+    {% endblock %}
+
+    {% if display_submitted %}
+      {% block author %}
+        {% if author is not empty %}
+          {{ include('curtistinkers_theme:text',
+            {
+              text: 'By @author'|t({'@author': author|striptags}),
+              text_size: 'normal',
+              text_color: 'default',
+              text_font_type: author_text_font_type
+            },
+            with_context: false
+          ) }}
+        {% endif %}
+      {% endblock %}
+    {% endif %}
+
+  </div>
+
+  {% if block('blog_media') is defined %}
+    <div class="w:full relative">
+      <div class="relative mx-auto mt-8 px-6 md:mt-12 lg:w-full xl:w-10/12">
+        {% block blog_media %}
+
+        {% endblock %}
+      </div>
+      <div class="absolute -bottom-8 z-[-1] h-[calc(33.3%+32px)] w-full bg-accent md:-bottom-12 md:h-[calc(33.3%+48px)]"></div>
+    </div>
+  {% endif %}
+</section>

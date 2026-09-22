@@ -1,0 +1,138 @@
+{% set cta_text_align = text_align|default('center') %}
+{% set background_color = background_color|default('noColor') %}
+
+{% set has_actions = block('actions') is defined ? 'yes' : 'no' %}
+{% set has_heading = heading_text is not empty ? 'yes' : 'no' %}
+{% set has_media = media.src is not empty ? 'yes' : 'no' %}
+{% set has_text = text is not empty ? 'yes' : 'no' %}
+
+{% set cta_variants =
+  html_cva(
+    base: ['relative z-1'],
+    variants: {
+      backgroundColor: {
+        primary: 'bg-primary text-primary-foreground',
+        'primary-inverted': 'bg-primary-foreground text-primary',
+        secondary: 'bg-secondary text-secondary-foreground',
+        'secondary-inverted': 'bg-secondary-foreground text-secondary',
+        accent: 'bg-accent text-accent-foreground',
+        'accent-inverted': 'bg-accent-foreground text-accent',
+        muted: 'bg-muted text-muted-foreground',
+        'muted-inverted': 'bg-muted-foreground text-muted',
+        destructive: 'bg-destructive text-destructive-foreground',
+        'destructive-inverted': 'bg-destructive-foreground text-destructive',
+        inverted: 'bg-foreground text-background',
+        noColor: 'bg-none text-foreground'
+      }
+    }
+  )
+%}
+
+{% set cta_content_variants =
+  html_cva(
+    base: ['relative', 'flex flex-col justify-center', 'min-h-80', 'gap-6 lg:gap-8', 'py-[90px] lg:py-[115px] xl:py-[140px]'],
+    variants: {
+      textAlign: {
+        left: ['text-left'],
+        right: ['text-right'],
+        center: ['text-center', 'lg:max-w-3/4', 'mx-auto', 'items-center']
+      },
+      hasBackground: {
+        yes: 'text-white!',
+        no: ''
+      }
+    }
+  )
+%}
+
+{% set cta_links_variants =
+  html_cva(
+    base: ['flex', 'w-full', 'flex-col', 'gap-6', 'sm:flex-row'],
+    variants: {
+      textAlign: {
+        left: 'md:justify-start',
+        right: 'md:justify-end',
+        center: ['justify-center', 'items-center']
+      }
+    }
+  )
+%}
+
+<section
+  class="{{
+  cta_variants.apply({
+    backgroundColor: background_color
+  })
+  }}"
+>
+  {% block media %}
+    {% if has_media == 'yes' %}
+      <div class="absolute z-[-1] h-full w-full">
+        <div class="absolute inset-0 bg-black/30"></div>
+        {% include 'canvas:image' ignore missing with {
+          src: media.src,
+          alt: media.alt,
+          class: 'object-cover w-full h-full',
+          width: media.width,
+          height: media.height
+        } only %}
+      </div>
+    {% endif %}
+  {% endblock %}
+
+  {% if has_heading == 'yes' or has_text == 'yes' or has_actions == 'yes' %}
+  <div
+    class="{{
+    cta_content_variants.apply({
+      textAlign: cta_text_align
+    })
+    }} px-4"
+  >
+    {% if has_heading == 'yes' %}
+      {{
+        include(
+          'curtistinkers_theme:heading',
+          {
+            heading_text: heading_text|default(''),
+            level: level|default(2),
+            align: cta_text_align,
+            text_color: 'default',
+            url: '',
+            heading_classes: 'max-w-4xl',
+            text_size: 'heading-responsive-7xl'
+          },
+          with_context: false
+        )
+      }}
+    {% endif %}
+
+    {% if has_text == 'yes' %}
+      <p class="max-w-3xl text-xl font-normal">
+        {# {{ include('curtistinkers_theme:text',
+          {
+            'text': text,
+            'text_size': 'normal',
+            'text_color': background_color
+          },
+          with_context: false
+        ) }} #}
+        {{ text }}
+      </p>
+    {% endif %}
+
+    {% if has_actions == 'yes' %}
+      <div
+        class="{{
+        cta_links_variants.apply({
+          textAlign: cta_text_align
+        })
+        }}"
+      >
+        {% block actions %}
+
+        {% endblock %}
+      </div>
+    {% endif %}
+  </div>
+  {% endif %}
+</section>
