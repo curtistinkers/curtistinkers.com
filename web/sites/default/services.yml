@@ -202,7 +202,7 @@ parameters:
   # for more information about the topic in general.
   # Note: By default the configuration is disabled.
   cors.config:
-    enabled: false
+    enabled: true
     # Specifies allowed headers and sets the Access-Control-Allow-Headers
     # header. For example, ['X-Custom-Header']. See
     # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Headers
