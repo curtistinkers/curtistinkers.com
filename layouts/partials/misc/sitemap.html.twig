@@ -1,0 +1,92 @@
+{#
+/**
+ * @file
+ * Theme implementation to display the sitemap page.
+ *
+ * Available variables:
+ * - message: A configurable introductory message.
+ * - sitemap_items: An array of renderable content items
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_sitemap()
+ */
+#}
+
+<article class="sitemap">
+  {% embed 'curtistinkers_theme:section' with
+    {
+      columns: '100',
+      mobile_columns: '1',
+      width: '90%',
+      margin_block_start: '0',
+      margin_block_end: '32',
+      padding_block_start: '16',
+      padding_block_end: '16',
+      section_header: true,
+      section_footer: false
+    }
+  %}
+
+    {% block header_slot %}
+      {{ include(
+        'curtistinkers_theme:heading',
+        {
+          heading_text: 'Sitemap',
+          level: '1',
+          text_color: 'primary',
+          text_size: 'default',
+          align: 'left'
+        },
+        with_context = false
+      ) }}
+    {% endblock %}
+
+    {% block main_slot %}
+      {% if message %}
+        <div class="sitemap-message">
+          {{ include(
+            'curtistinkers_theme:text',
+            {
+              text: message,
+              text_size: 'normal',
+              text_color: 'default'
+            },
+            with_context = false
+          ) }}
+        </div>
+      {% endif %}
+
+      {% if sitemap_items %}
+        {% embed 'curtistinkers_theme:section' with
+          {
+            columns: '33-33-33',
+            mobile_columns: '1',
+            width: '100%',
+            margin_block_start: '0',
+            margin_block_end: '32',
+            padding_block_start: '16',
+            padding_block_end: '16',
+            section_header: false,
+            section_footer: false
+          }
+        %}
+          {% block main_slot %}
+            {% for item in sitemap_items %}
+              {{ include(
+                'curtistinkers_theme:text',
+                {
+                  text: item,
+                  text_size: 'normal',
+                  text_color: 'default'
+                },
+                with_context = false
+              ) }}
+            {% endfor %}
+          {% endblock %}
+        {% endembed %}
+      {% endif %}
+
+    {% endblock %}
+
+  {% endembed %}
+</article>

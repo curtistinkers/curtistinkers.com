@@ -1,0 +1,53 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present all user data.
+ *
+ * This template is used when viewing a registered user's page,
+ * e.g., example.com/user/123. 123 being the user's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.field_example'. Fields attached to a user
+ *   such as 'user_picture' are available as 'content.user_picture'.
+ * - attributes: HTML attributes for the container element.
+ * - user: A Drupal User entity.
+ *
+ * @see \Drupal\user\UserThemeHooks::preprocessUser()
+ *
+ * @ingroup themeable
+ */
+#}
+{% set section_width = '90%' %}
+{% set section_margin_block_start = '0' %}
+{% set section_margin_block_end = '32' %}
+{% set section_padding_block_start = '16' %}
+{% set section_padding_block_end = '16' %}
+
+{% if user.isLoggedIn() %}
+{# Section #}
+{% embed 'curtistinkers_theme:section' with
+  {
+    columns: '100',
+    mobile_columns: '1',
+    width: section_width,
+    margin_block_start: section_margin_block_start,
+    margin_block_end: section_margin_block_end,
+    padding_block_start: section_padding_block_start,
+    padding_block_end: section_padding_block_end,
+    section_header: false,
+    section_footer: false
+  }
+%}
+  {# Main slot #}
+  {% block main_slot %}
+  <article{{ attributes }}>
+    {% if content %}
+      {{- content -}}
+    {% endif %}
+  </article>
+  {% endblock %}
+  {# End main slot #}
+{% endembed %}
+{# End section #}
+{% endif %}

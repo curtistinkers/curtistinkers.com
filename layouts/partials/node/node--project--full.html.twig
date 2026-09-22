@@ -1,0 +1,258 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+ *   Only method names starting with "get", "has", or "is" and a few common
+ *   methods such as "id", "label", and "bundle" are available. For example:
+ *   - node.getCreatedTime() will return the node creation timestamp.
+ *   - node.hasField('field_example') returns TRUE if the node bundle includes
+ *     field_example. (This does not indicate the presence of a value in this
+ *     field.)
+ *   - node.isPublished() will return whether the node is published or not.
+ *   Calling other methods, such as node.delete(), will result in an exception.
+ *   See \Drupal\node\Entity\Node for a full list of public properties and
+ *   methods for the node object.
+ * - label: (optional) The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - date: (optional) Themed creation date field.
+ * - author_name: (optional) Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ *
+ * @see \Drupal\node\Hook\NodeThemeHooks::preprocessNode()
+ *
+ * @ingroup themeable
+ */
+#}
+{% set article_classes = [
+  'node',
+  view_mode ? 'node--' ~ view_mode|clean_class,
+  'node--' ~ node.bundle|clean_class,
+  view_mode ? 'node--' ~ node.bundle|clean_class ~ '--' ~ view_mode|clean_class,
+  'node--' ~ node.id,
+  view_mode ? 'node--' ~ node.id ~ '--' ~ view_mode|clean_class,
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+] %}
+
+{% set content_classes = [
+  'node--content',
+  'content-content'
+] %}
+
+{% set datetime_format = 'short_date_only' %}
+
+{% set section_width = '75%' %}
+{% set section_margin_block_start = '0' %}
+{% set section_margin_block_end = '32' %}
+{% set section_padding_block_start = '16' %}
+{% set section_padding_block_end = '16' %}
+
+{% set published_html_date = node.created.value|date('U')|format('html_date') %}
+{% set changed_html_date = node.changed.value|date('U')|format('html_date') %}
+
+{% if published_html_date != changed_html_date %}
+  {% set has_changed = true %}
+  {% set last_updated %}
+    <p>
+      {% trans %}Last updated{% endtrans %} {{ include('curtistinkers_theme:datetime', { timestamp: node.changed.value|date('U'), display_format: datetime_format }, with_context = false )|raw }}
+    </p>
+  {% endset %}
+{% endif %}
+
+<article{{ attributes.addClass(article_classes) }}>
+
+  {# Hero #}
+  {% embed 'curtistinkers_theme:hero-blog' with
+    {
+      heading_text: label,
+      heading_level: 1,
+      heading_color: 'secondary',
+      heading_align: 'left',
+      date: node.created.value,
+      author: author_name,
+      date_format: datetime_format,
+      text_font_type: 'sans',
+      display_submitted: display_submitted
+    }
+  %}
+    {% block blog_media %}
+      {{ content.field_featured_image }}
+    {% endblock %}
+  {% endembed %}
+  {# End hero #}
+
+  {# Section #}
+  {% embed 'curtistinkers_theme:section' with
+    {
+      columns: '100',
+      mobile_columns: '1',
+      width: section_width,
+      margin_block_start: section_margin_block_start,
+      margin_block_end: section_margin_block_end,
+      padding_block_start: section_padding_block_start,
+      padding_block_end: section_padding_block_end,
+      section_header: false,
+      section_footer: true
+    }
+  %}
+    {% block main_slot %}
+
+      {# Node content #}
+      <div id="node--{{ node.id }}--content"{{ content_attributes.addClass(content_classes) }}>
+        {{
+          include(
+            'curtistinkers_theme:text',
+            {
+              text: content.field_content,
+              text_font_type: 'serif'
+            },
+            with_context: false
+          )
+        }}
+      </div>
+      {# End node content #}
+
+    {% endblock %}
+    {# End main slot block #}
+
+    {% block footer_slot %}
+      {# Last updated #}
+      {% block last_updated %}
+        {% if display_submitted and has_changed %}
+          <div id="node--{{ node.id }}--last-updated" class="node--last-updated content-last-updated">
+            {{
+              include(
+                'curtistinkers_theme:text',
+                {
+                  text: last_updated
+                },
+                with_context: false
+              )
+            }}
+          </div>
+        {% endif %}
+      {% endblock %}
+      {# End last updated #}
+
+      {# Bibliography #}
+      {% block bibliography %}
+        {% if content.field_bibliography is not empty %}
+          <div id="node--{{ node.id }}--field-bibliography" class="node--bibliography content-bibliography">
+            {{ content.field_bibliography }}
+          </div>
+        {% endif %}
+      {% endblock %}
+      {# End bibliography #}
+
+      {# Content tags block #}
+      {% block tags %}
+        {% if content.field_tags is not empty %}
+          <div id="node--{{ node.id }}--field-tags" class="node--tags content-tags">
+            {{ content.field_tags }}
+          </div>
+        {% endif %}
+      {% endblock %}
+      {# End content tags block #}
+
+      {# Related content block #}
+      {% block related_content %}
+        {% if content.field_related_content is not empty %}
+          <div id="node--{{ node.id }}--field-related-content" class="node--related-content content-related-content">
+            {{ content.field_related_content }}
+          </div>
+        {% endif %}
+      {% endblock %}
+      {# End related content block #}
+
+      {# Comments block #}
+      {% block comments %}
+        {% if content.field_comments %}
+          <div id="node--{{ node.id }}--field-comments" class="node--comments content-comments">
+            {% if content.field_comments.0.comments is empty and logged_in == false %}
+              {{
+                include(
+                  'curtistinkers_theme:heading',
+                  {
+                    heading_text: 'Comments'|t,
+                    level: 2
+                  },
+                  with_context: false
+                )
+              }}
+              <p>
+                {{
+                  include(
+                    'curtistinkers_theme:text',
+                    {
+                      text: 'No one has left a comment yet.'|t,
+                      text_font_type: 'serif'
+                    },
+                    with_context: false
+                  )
+                }}
+              </p>
+              <p>
+                {{
+                  include(
+                    'curtistinkers_theme:text',
+                    {
+                      text: '<a href="@url">Log in</a> to post a comment.'|t({'@url': '/user/login'}),
+                      text_font_type: 'serif'
+                    },
+                    with_context: false
+                  )
+                }}
+              </p>
+            {% else %}
+              {{ content.field_comments }}
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endblock %}
+      {# End comments block #}
+
+    {% endblock %}
+    {# End footer slot block #}
+
+  {% endembed %}
+  {# End section #}
+
+</article>
+

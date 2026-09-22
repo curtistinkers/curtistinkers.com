@@ -1,0 +1,86 @@
+{#
+/**
+ * @file
+ * Default theme override for comment fields.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing element.
+ * - label_hidden: Whether to show the field label or not.
+ * - title_attributes: HTML attributes for the title.
+ * - label: The label for the field.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional title output populated by modules, intended to
+ *   be displayed after the main title tag that appears in the template.
+ * - comments: List of comments rendered through comment.html.twig.
+ * - content_attributes: HTML attributes for the form title.
+ * - comment_form: The 'Add new comment' form.
+ * - comment_display_mode: Is the comments are threaded.
+ * - comment_type: The comment type bundle ID for the comment field.
+ * - entity_type: The entity type to which the field belongs.
+ * - field_name: The name of the field.
+ * - field_type: The type of the field.
+ * - label_display: The display settings for the label.
+ *
+ * @see \Drupal\Core\Field\FieldPreprocess::preprocessField()
+ * @see comment_preprocess_field()
+ */
+#}
+{%
+  set title_classes = [
+    label_display == 'visually_hidden' ? 'visually-hidden',
+    label_display == 'inline' ? 'inline',
+  ]
+%}
+
+{%
+  set section_classes = [
+    ('field-' ~ field_type)|clean_class,
+    ('field--' ~ field_name)|clean_class,
+    ('field--' ~ entity_type ~ '--' ~ field_name)|clean_class,
+    comment_display_mode == 1 ? 'threaded' : 'not-threaded',
+  ]
+%}
+
+{% set heading %}
+  {% if label_hidden == false %}
+    {{ title_prefix }}
+    <div{{ title_attributes.addClass(title_classes) }}>
+    {{
+      include(
+        'curtistinkers_theme:heading',
+        {
+          heading_text: label,
+          level: 2
+        },
+        with_context: false
+      )
+    }}
+    </div>
+    {{ title_suffix }}
+  {% endif %}
+{% endset %}
+
+<section{{ attributes.addClass(section_classes) }}>
+
+  {{- heading -}}
+
+  {{ comments }}
+
+  {% if comment_form %}
+    <div{{ content_attributes }}>
+      {{
+        include(
+          'curtistinkers_theme:heading',
+          {
+            heading_text: 'Add new comment'|t,
+            level: 2
+          },
+          with_context: false
+        )
+      }}
+    </div>
+    {{ comment_form }}
+  {% endif %}
+
+</section>
