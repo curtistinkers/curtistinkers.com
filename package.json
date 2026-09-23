@@ -3,9 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "keywords": [],
+  "keywords": [
+    "personal-blog",
+    "tech-blog",
+    "cecil",
+    "php",
+    "ssg",
+    "static-site-generator"
+  ],
   "author": "curtistinkers",
-  "license": "MIT",
+  "license": "(MIT AND CC-BY-SA-4.0)",
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.3",
     "autoprefixer": "^10.6.1",

@@ -3,6 +3,14 @@
     "description": "A personal tech blog.",
     "type": "project",
     "license": "(MIT and CC-BY-SA-4.0)",
+    "keywords": [
+        "personal-blog",
+        "tech-blog",
+        "cecil",
+        "php",
+        "ssg",
+        "static-site-generator"
+    ],
     "autoload": {
         "psr-4": {
             "Curtistinkers\\CurtistinkersCom\\": "src/"
