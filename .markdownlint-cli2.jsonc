@@ -1,0 +1,21 @@
+{
+  "config": {
+    "default": true,
+    "line-length": {
+      "line_length": 120,
+      "heading_line_length": 120,
+      "code_block_line_length": 120
+    }
+  },
+  "overrides": [
+    {
+      "filter": [ "**/LICENSE.md", "LICENSE.md" ],
+      "config": {
+        "no-trailing-punctuation": false,
+        "first-line-h1": false,
+        "no-emphasis-as-heading": false
+      },
+      "combine": "merge"
+    }
+  ]
+}
