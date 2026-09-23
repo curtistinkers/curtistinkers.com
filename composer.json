@@ -1,0 +1,21 @@
+{
+    "name": "curtistinkers/curtistinkers.com",
+    "description": "A personal tech blog.",
+    "type": "project",
+    "license": "(MIT and CC-BY-SA-4.0)",
+    "autoload": {
+        "psr-4": {
+            "Curtistinkers\\CurtistinkersCom\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "curtistinkers",
+            "email": "curtistinkers.commit@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require-dev": {
+        "cecil/cecil": "^9.1"
+    }
+}
